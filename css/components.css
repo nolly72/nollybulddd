@@ -1,0 +1,53 @@
+/* Дома */
+.grid-houses { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+.house-card {
+    background: rgba(255,255,255,0.03); 
+    padding: 25px; 
+    border-radius: var(--radius);
+    border: 1px solid rgba(255,255,255,0.05); 
+    transition: 0.5s;
+}
+.house-card:hover { background: var(--brown); transform: translateY(-10px); }
+.house-img { height: 280px; background: #2a3d34; border-radius: 25px; margin-bottom: 20px; }
+
+/* Калькулятор */
+.calc-container { background: var(--light); color: var(--green); padding: 60px; border-radius: var(--radius); }
+.calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+.calc-result h3 { font-size: 3.5rem; font-weight: 800; }
+
+/* Конструктор */
+.constructor-card { background: #1F2823; padding: 60px; border-radius: var(--radius); border: 1px solid rgba(255,255,255,0.05); }
+.constr-grid { display: grid; grid-template-columns: 1fr 1fr 300px; gap: 40px; }
+.opt-label { text-transform: uppercase; font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; margin-bottom: 20px; opacity: 0.6; }
+.opt-group { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.opt-btn {
+    background: rgba(255,255,255,0.05); 
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--light); 
+    padding: 15px 25px; 
+    border-radius: 20px; 
+    cursor: pointer; 
+    transition: 0.3s;
+    font-weight: 600;
+}
+
+.opt-btn.active { 
+    background: var(--accent); 
+    color: var(--green); 
+    font-weight: 800;
+    border-color: var(--accent);
+}
+
+.total-price-box { font-size: 3rem; color: var(--accent); font-weight: 800; }
+
+/* Философия */
+.philosophy-sec { background: #131B17; min-height: 70vh; display: flex; align-items: center; }
+.philo-big { font-size: clamp(2.5rem, 7vw, 5rem); font-weight: 800; line-height: 1.1; margin-bottom: 50px; }
+.philo-text { font-size: 1.4rem; opacity: 0.8; font-weight: 400; }
+
+@media (max-width: 900px) {
+    .calc-grid, .constr-grid { grid-template-columns: 1fr; }
+    .nav-container { padding: 12px 25px; gap: 15px; }
+    .nav-links a { font-size: 10px; }
+}

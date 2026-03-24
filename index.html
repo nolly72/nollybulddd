@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nolly Building | Эстетика загородной жизни</title>
     
-    <!-- ПРАВИЛЬНЫЕ ШРИФТЫ ( Montserrat и Syne ) -->
+    <!-- Шрифты и Библиотеки -->
     <link href="https://fonts.googleapis.com" rel="stylesheet">
-    
-    <!-- ПРАВИЛЬНАЯ БИБЛИОТЕКА АНИМАЦИЙ (AOS) -->
     <link href="https://unpkg.com" rel="stylesheet">
     
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
 </head>
 <body>
 
@@ -32,7 +31,7 @@
 
     <!-- Hero -->
     <section class="hero">
-        <div class="hero-content" data-aos="fade-up">
+        <div class="hero-content" data-aos="zoom-out" data-aos-duration="2000">
             <h1 class="main-title">Nolly <br>Building</h1>
             <p class="hero-sub">Премиальные резиденции от 10 млн ₽</p>
             <a href="#constructor" class="btn-main">Создать свой дом</a>
@@ -53,7 +52,7 @@
             <h2 class="philo-big" data-aos="fade-up">Тихая роскошь <br> в сердце природы</h2>
             <div class="philo-grid">
                 <p class="philo-text" data-aos="fade-right">
-                    Мы в Nolly Building верим, что дом — это не просто стены, а продолжение ландшафта. Мы используем только честные материалы: сибирский кедр, дикий камень и закаленное стекло. Наша задача — создать пространство, где тишина леса становится частью вашего интерьера.
+                    Мы в Nolly Building верим, что дом — это не просто стены, а продолжение ландшафта. Мы используем только честные материалы: сибирский кедр, дикий камень и закаленное стекло.
                 </p>
                 <div class="philo-accent" data-aos="fade-left">
                     <span>10+ лет</span>
@@ -86,14 +85,11 @@
     <!-- Конструктор -->
     <section id="constructor" class="section">
         <div class="constructor-card" data-aos="fade-up">
-            <div class="constr-header">
-                <h2 class="section-title" style="text-align: left; margin-bottom: 10px;">Конфигуратор резиденции</h2>
-                <p style="color: var(--accent); margin-bottom: 40px;">Индивидуальное проектирование Nolly: выберите материалы и опции</p>
-            </div>
-
+            <h2 class="section-title" style="text-align: left; margin-bottom: 40px;">Конструктор резиденции</h2>
+            
             <div class="constr-grid">
                 <div class="constr-item">
-                    <p class="opt-label">Основной материал фасада</p>
+                    <p class="opt-label">Материал фасада</p>
                     <div class="opt-group">
                         <button class="opt-btn active" data-add="0" onclick="selectOpt(this)">Сибирский кедр</button>
                         <button class="opt-btn" data-add="1500000" onclick="selectOpt(this)">Природный камень</button>
@@ -104,29 +100,29 @@
                 </div>
 
                 <div class="constr-item">
-                    <p class="opt-label">Дополнительное оснащение</p>
+                    <p class="opt-label">Дополнения</p>
                     <div class="opt-group">
                         <button class="opt-btn" data-add="800000" onclick="toggleAddon(this)">Терраса 40м²</button>
                         <button class="opt-btn" data-add="3500000" onclick="toggleAddon(this)">Бассейн-инфинити</button>
                         <button class="opt-btn" data-add="1200000" onclick="toggleAddon(this)">Умный дом</button>
-                        <button class="opt-btn" data-add="2500000" onclick="toggleAddon(this)">Панорамный лифт</button>
+                        <button class="opt-btn" data-add="2500000" onclick="toggleAddon(this)">Лифт</button>
                         <button class="opt-btn" data-add="1700000" onclick="toggleAddon(this)">Зона SPA</button>
-                        <button class="opt-btn" data-add="900000" onclick="toggleAddon(this)">Винный погреб</button>
+                        <button class="opt-btn" data-add="900000" onclick="toggleAddon(this)">Погреб</button>
                     </div>
                 </div>
 
                 <div class="constr-result">
-                    <p>Стоимость проекта</p>
+                    <p>Итоговая стоимость</p>
                     <div class="total-price-box">
                         <span id="final-price">10 000 000</span> <small>₽</small>
                     </div>
-                    <button class="btn-main" style="width: 100%; margin-top: 20px;">Заказать расчет</button>
+                    <button class="btn-main" style="width: 100%; margin-top: 20px;">Заказать проект</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- JS Библиотеки (С ПРАВИЛЬНЫМИ ССЫЛКАМИ) -->
+    <!-- Скрипты -->
     <script src="https://unpkg.com"></script>
     <script src="https://unpkg.com"></script>
     <script src="js/main.js"></script>
