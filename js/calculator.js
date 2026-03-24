@@ -15,8 +15,6 @@ function initMortgage() {
         if (priceLabel) priceLabel.innerText = price.toLocaleString('ru-RU');
         if (initialLabel) initialLabel.innerText = initial.toLocaleString('ru-RU');
 
-        // Формула: (Тело кредита * Ставка) / (1 - (1 + Ставка)^-Срок)
-        // Ставка 1% в месяц (12% годовых), Срок 240 месяцев (20 лет)
         const monthly = (price - initial) * 0.01 / (1 - Math.pow(1.01, -240));
         if (monthlyResult) monthlyResult.innerText = Math.round(monthly).toLocaleString('ru-RU') + ' ₽';
     };
@@ -25,10 +23,9 @@ function initMortgage() {
     updateCalc();
 }
 
-// --- Конструктор цены (Расширенный) ---
+// --- Конструктор цены (10 материалов + 10 опций) ---
 let basePrice = 10000000;
 
-// Выбор материала (только один активный в группе)
 window.selectOpt = function(btn) {
     const parent = btn.parentElement;
     parent.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('active'));
@@ -36,7 +33,6 @@ window.selectOpt = function(btn) {
     updateTotal();
 };
 
-// Переключение доп. опций (множественный выбор)
 window.toggleAddon = function(btn) {
     btn.classList.toggle('active');
     updateTotal();
@@ -44,7 +40,6 @@ window.toggleAddon = function(btn) {
 
 function updateTotal() {
     let extra = 0;
-    // Собираем все значения data-add у активных кнопок
     document.querySelectorAll('.opt-btn.active').forEach(btn => {
         const val = btn.getAttribute('data-add');
         if (val) extra += parseInt(val);
@@ -53,12 +48,9 @@ function updateTotal() {
     animatePrice("final-price", basePrice + extra);
 }
 
-// Плавная анимация изменения цифр
 function animatePrice(id, end) {
     const obj = document.getElementById(id);
     if (!obj) return;
-    
-    // Очищаем текущее значение от пробелов для расчетов
     const start = parseInt(obj.innerText.replace(/\s/g, '')) || 0;
     const duration = 600;
     let startTime = null;
@@ -66,20 +58,15 @@ function animatePrice(id, end) {
     const step = (timestamp) => {
         if (!startTime) startTime = timestamp;
         const progress = Math.min((timestamp - startTime) / duration, 1);
-        const ease = 1 - Math.pow(1 - progress, 3); // Из замедления в конце
+        const ease = 1 - Math.pow(1 - progress, 3);
         const current = Math.floor(ease * (end - start) + start);
-        
         obj.innerText = current.toLocaleString('ru-RU');
-        
-        if (progress < 1) {
-            requestAnimationFrame(step);
-        }
+        if (progress < 1) requestAnimationFrame(step);
     };
     requestAnimationFrame(step);
 }
 
-// Инициализация при загрузке
 document.addEventListener('DOMContentLoaded', () => {
     initMortgage();
-    updateTotal(); // Считаем начальную цену (база + выбранный Кедр)
+    updateTotal();
 });
