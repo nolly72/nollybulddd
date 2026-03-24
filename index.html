@@ -17,6 +17,7 @@
         <div class="nav-container">
             <div class="nav-links">
                 <a href="#catalog">Дома</a>
+                <a href="#philosophy">Философия</a>
                 <a href="#calc">Ипотека</a>
                 <a href="#constructor">Конструктор</a>
             </div>
@@ -40,6 +41,22 @@
         <h2 class="section-title" data-aos="fade-up">Коллекция резиденций</h2>
         <div class="grid-houses" id="house-list">
             <!-- Генерируется через JS -->
+        </div>
+    </section>
+
+    <!-- ФИЛОСОФИЯ (Новый блок) -->
+    <section id="philosophy" class="section philosophy-sec">
+        <div class="container">
+            <h2 class="philo-big" data-aos="fade-up">Тихая роскошь <br> в сердце природы</h2>
+            <div class="philo-grid">
+                <p class="philo-text" data-aos="fade-right">
+                    Мы в Nolly Building верим, что дом — это не просто стены, а продолжение ландшафта. Мы используем только честные материалы: сибирский кедр, дикий камень и закаленное стекло. Наша задача — создать пространство, где тишина леса становится частью вашего интерьера.
+                </p>
+                <div class="philo-accent" data-aos="fade-left">
+                    <span>10+ лет</span>
+                    <p>Создаем архитектуру, которая не устареет спустя десятилетия.</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -67,25 +84,31 @@
     <section id="constructor" class="section">
         <div class="constructor-card" data-aos="fade-up">
             <div class="constr-header">
-                <h2 class="section-title" style="text-align: left; margin-bottom: 10px;">Конструктор резиденции</h2>
-                <p style="color: var(--accent); margin-bottom: 40px;">Индивидуальное проектирование Nolly</p>
+                <h2 class="section-title" style="text-align: left; margin-bottom: 10px;">Конфигуратор резиденции</h2>
+                <p style="color: var(--accent); margin-bottom: 40px;">Индивидуальное проектирование Nolly: выберите материалы и опции</p>
             </div>
 
             <div class="constr-grid">
                 <div class="constr-item">
-                    <p class="opt-label">Основной материал</p>
+                    <p class="opt-label">Основной материал фасада</p>
                     <div class="opt-group">
-                        <button class="opt-btn active" data-add="0" onclick="selectOpt(this, 'mat')">Кедр</button>
-                        <button class="opt-btn" data-add="1500000" onclick="selectOpt(this, 'mat')">Природный камень</button>
-                        <button class="opt-btn" data-add="2200000" onclick="selectOpt(this, 'mat')">Монолит-стекло</button>
+                        <button class="opt-btn active" data-add="0" onclick="selectOpt(this)">Сибирский кедр</button>
+                        <button class="opt-btn" data-add="1500000" onclick="selectOpt(this)">Природный камень</button>
+                        <button class="opt-btn" data-add="2200000" onclick="selectOpt(this)">Монолит-стекло</button>
+                        <button class="opt-btn" data-add="1800000" onclick="selectOpt(this)">Сланцевый кирпич</button>
+                        <button class="opt-btn" data-add="2800000" onclick="selectOpt(this)">Титан и медь</button>
                     </div>
                 </div>
 
                 <div class="constr-item">
-                    <p class="opt-label">Дополнительные опции</p>
+                    <p class="opt-label">Дополнительное оснащение</p>
                     <div class="opt-group">
                         <button class="opt-btn" data-add="800000" onclick="toggleAddon(this)">Терраса 40м²</button>
                         <button class="opt-btn" data-add="3500000" onclick="toggleAddon(this)">Бассейн-инфинити</button>
+                        <button class="opt-btn" data-add="1200000" onclick="toggleAddon(this)">Умный дом</button>
+                        <button class="opt-btn" data-add="2500000" onclick="toggleAddon(this)">Панорамный лифт</button>
+                        <button class="opt-btn" data-add="1700000" onclick="toggleAddon(this)">Зона SPA</button>
+                        <button class="opt-btn" data-add="900000" onclick="toggleAddon(this)">Винный погреб</button>
                     </div>
                 </div>
 
