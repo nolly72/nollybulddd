@@ -1,0 +1,79 @@
+:root {
+    --bg: #0A140F;       /* Глубокий темно-зеленый */
+    --accent: #A67C52;   /* Древесный дуб */
+    --text: #F4F1EA;     /* Светлый беж */
+    --transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Manrope', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+i { font-family: 'Playfair Display', serif; }
+
+/* Плавный скролл */
+html { scroll-behavior: smooth; }
+
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+.main-title {
+    font-size: clamp(3rem, 12vw, 9rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -3px;
+    line-height: 0.85;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    margin-top: 20px;
+    color: var(--accent);
+}
+
+.btn-gold {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 20px 50px;
+    border: 1px solid var(--accent);
+    color: var(--text);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: var(--transition);
+}
+
+.btn-gold:hover {
+    background: var(--accent);
+    color: var(--bg);
+}
+
+/* Navbar */
+.navbar {
+    position: absolute;
+    top: 0; width: 100%;
+    padding: 40px 10%;
+    display: flex;
+    justify-content: space-between;
+    z-index: 10;
+}
+
+.navbar nav a {
+    color: var(--text);
+    text-decoration: none;
+    margin-left: 30px;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
