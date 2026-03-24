@@ -3,50 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nolly Building | Premium Architecture</title>
+    <title>Nolly Building | Эстетика загородной жизни</title>
     
-    <!-- Премиальный шрифт: Jost (чистый, современный) и Marcellus (антиква для акцентов) -->
+    <!-- Шрифты: Montserrat (заголовки) и Syne (акценты) -->
     <link href="https://fonts.googleapis.com" rel="stylesheet">
     <link href="https://unpkg.com" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <!-- Навигация без логотипа -->
-    <nav class="navbar" data-aos="fade-down">
-        <div class="nav-center">
-            <a href="#projects">Объекты</a>
-            <a href="#calc">Расчет</a>
-            <a href="#constructor">Конструктор</a>
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-links">
+                <a href="#catalog">Дома</a>
+                <a href="#calc">Ипотека</a>
+                <a href="#constructor">Конструктор</a>
+            </div>
+            <div class="quiz-icon" onclick="openQuiz()" title="Подобрать дом">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="hero">
-        <div class="hero-content" data-aos="zoom-out" data-aos-duration="2500">
-            <h1 class="main-title">Nolly Building</h1>
-            <p class="subtitle">Архитектура, рожденная <i>тишиной леса</i></p>
-            <div class="scroll-badge">Scroll to explore</div>
+        <div class="hero-content" data-aos="fade-up">
+            <h1 class="main-title">Nolly <br>Building</h1>
+            <p class="hero-sub">Премиальные резиденции от 10 млн ₽</p>
+            <a href="#constructor" class="btn-main">Создать свой дом</a>
         </div>
     </section>
 
-    <!-- Секция с проектами (Мягкие формы) -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Наши резиденции</h2>
-            <div class="project-card" data-aos="fade-up">
-                <div class="card-image-wrap">
-                    <img src="https://images.unsplash.com" alt="House">
+    <!-- Каталог (6 домов) -->
+    <section id="catalog" class="section">
+        <h2 class="section-title" data-aos="fade-up">Коллекция резиденций</h2>
+        <div class="grid-houses" id="house-list">
+            <!-- Дома генерируются через JS или вручную ниже -->
+        </div>
+    </section>
+
+    <!-- Ипотечный калькулятор -->
+    <section id="calc" class="section calc-bg">
+        <div class="calc-container" data-aos="zoom-in">
+            <h2>Финансовый расчет</h2>
+            <div class="calc-grid">
+                <div class="calc-inputs">
+                    <label>Стоимость: <span id="priceLabel">15 000 000</span> ₽</label>
+                    <input type="range" id="priceRange" min="10000000" max="25000000" step="500000" value="15000000">
+                    
+                    <label>Первый взнос: <span id="initialLabel">3 000 000</span> ₽</label>
+                    <input type="range" id="initialRange" min="1500000" max="10000000" step="100000" value="3000000">
                 </div>
-                <div class="card-info">
-                    <h3>Pine Valley</h3>
-                    <p>Слияние камня и дерева</p>
+                <div class="calc-result">
+                    <p>Ежемесячно</p>
+                    <h3 id="monthlyResult">84 500 ₽</h3>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Скрипты для плавного скролла -->
+    <!-- Скрипты -->
     <script src="https://unpkg.com"></script>
     <script src="https://unpkg.com"></script>
     <script src="js/main.js"></script>
