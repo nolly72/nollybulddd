@@ -23,7 +23,7 @@
                 <a href="#calc">Ипотека</a>
                 <a href="#constructor">Конструктор</a>
             </div>
-            <div class="quiz-icon" onclick="openQuiz()" title="Подобрать дом">
+            <div class="quiz-icon" onclick="window.openQuiz()" title="Подобрать дом">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
             </div>
         </div>
@@ -38,25 +38,25 @@
         </div>
     </section>
 
-    <!-- Каталог -->
+    <!-- Коллекция резиденций -->
     <section id="catalog" class="section">
         <h2 class="section-title" data-aos="fade-up">Коллекция резиденций</h2>
-        <div class="grid-houses" id="house-list">
-            <!-- Генерируется через JS -->
-        </div>
+        <!-- Важно: этот ID должен быть пустым, JS заполнит его 10 домами -->
+        <div class="grid-houses" id="house-list"></div>
     </section>
 
-    <!-- ФИЛОСОФИЯ -->
+    <!-- Философия (Исправленный шрифт) -->
     <section id="philosophy" class="section philosophy-sec">
         <div class="container">
             <h2 class="philo-big" data-aos="fade-up">Тихая роскошь <br> в сердце природы</h2>
             <div class="philo-grid">
                 <p class="philo-text" data-aos="fade-right">
-                    Мы в Nolly Building верим, что дом — это не просто стены, а продолжение ландшафта. Мы используем только честные материалы: сибирский кедр, дикий камень и закаленное стекло.
+                    Мы в Nolly Building верим, что дом — это не просто стены, а продолжение ландшафта. Мы используем только честные материалы: сибирский кедр, дикий камень и закаленное стекло. Наша задача — создать пространство, где тишина леса становится частью вашего интерьера.
                 </p>
+                <!-- Блок с единым шрифтом -->
                 <div class="philo-accent" data-aos="fade-left">
-                    <span>10+ лет</span>
-                    <p>Создаем архитектуру, которая не устареет спустя десятилетия.</p>
+                    <span class="accent-number">10+ лет</span>
+                    <p class="accent-desc">Создаем архитектуру, которая не устареет спустя десятилетия.</p>
                 </div>
             </div>
         </div>
@@ -82,32 +82,32 @@
         </div>
     </section>
 
-    <!-- Конструктор -->
+    <!-- Конструктор (Рабочие кнопки) -->
     <section id="constructor" class="section">
         <div class="constructor-card" data-aos="fade-up">
-            <h2 class="section-title" style="text-align: left; margin-bottom: 40px;">Конструктор резиденции</h2>
+            <h2 class="section-title" style="text-align: left; margin-bottom: 40px;">Конфигуратор резиденции</h2>
             
             <div class="constr-grid">
                 <div class="constr-item">
                     <p class="opt-label">Материал фасада</p>
                     <div class="opt-group">
-                        <button class="opt-btn active" data-add="0" onclick="selectOpt(this)">Сибирский кедр</button>
-                        <button class="opt-btn" data-add="1500000" onclick="selectOpt(this)">Природный камень</button>
-                        <button class="opt-btn" data-add="2200000" onclick="selectOpt(this)">Монолит-стекло</button>
-                        <button class="opt-btn" data-add="1800000" onclick="selectOpt(this)">Сланцевый кирпич</button>
-                        <button class="opt-btn" data-add="2800000" onclick="selectOpt(this)">Титан и медь</button>
+                        <button class="opt-btn active" data-add="0" onclick="window.selectOpt(this)">Сибирский кедр</button>
+                        <button class="opt-btn" data-add="1500000" onclick="window.selectOpt(this)">Природный камень</button>
+                        <button class="opt-btn" data-add="2200000" onclick="window.selectOpt(this)">Монолит-стекло</button>
+                        <button class="opt-btn" data-add="1800000" onclick="window.selectOpt(this)">Сланцевый кирпич</button>
+                        <button class="opt-btn" data-add="2800000" onclick="window.selectOpt(this)">Титан и медь</button>
                     </div>
                 </div>
 
                 <div class="constr-item">
-                    <p class="opt-label">Дополнения</p>
+                    <p class="opt-label">Дополнительные опции</p>
                     <div class="opt-group">
-                        <button class="opt-btn" data-add="800000" onclick="toggleAddon(this)">Терраса 40м²</button>
-                        <button class="opt-btn" data-add="3500000" onclick="toggleAddon(this)">Бассейн-инфинити</button>
-                        <button class="opt-btn" data-add="1200000" onclick="toggleAddon(this)">Умный дом</button>
-                        <button class="opt-btn" data-add="2500000" onclick="toggleAddon(this)">Лифт</button>
-                        <button class="opt-btn" data-add="1700000" onclick="toggleAddon(this)">Зона SPA</button>
-                        <button class="opt-btn" data-add="900000" onclick="toggleAddon(this)">Погреб</button>
+                        <button class="opt-btn" data-add="800000" onclick="window.toggleAddon(this)">Терраса 40м²</button>
+                        <button class="opt-btn" data-add="3500000" onclick="window.toggleAddon(this)">Бассейн-инфинити</button>
+                        <button class="opt-btn" data-add="1200000" onclick="window.toggleAddon(this)">Умный дом</button>
+                        <button class="opt-btn" data-add="2500000" onclick="window.toggleAddon(this)">Панорамный лифт</button>
+                        <button class="opt-btn" data-add="1700000" onclick="window.toggleAddon(this)">Зона SPA</button>
+                        <button class="opt-btn" data-add="900000" onclick="window.toggleAddon(this)">Винный погреб</button>
                     </div>
                 </div>
 
@@ -122,7 +122,7 @@
         </div>
     </section>
 
-    <!-- Скрипты -->
+    <!-- Скрипты (С правильными ссылками) -->
     <script src="https://unpkg.com"></script>
     <script src="https://unpkg.com"></script>
     <script src="js/main.js"></script>
