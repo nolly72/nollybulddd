@@ -5,23 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nolly Building | Эстетика загородной жизни</title>
     
-    <!-- Подключение шрифтов (Syne для заголовков) -->
+    <!-- Шрифты -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com" rel="stylesheet">
     
-    <!-- AOS CSS для анимаций -->
+    <!-- AOS CSS -->
     <link href="https://unpkg.com" rel="stylesheet">
     
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/components.css">
     
     <style>
-        body { font-family: 'Manrope', sans-serif; background-color: #1A2420; color: #fff; }
+        body { font-family: 'Manrope', sans-serif; background-color: #1A2420; color: #fff; margin: 0; overflow-x: hidden; }
         .section { padding: 100px 5%; max-width: 1400px; margin: 0 auto; }
         .grid-houses { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .opt-btn { padding: 12px 24px; border: 1px solid rgba(255,255,255,0.2); background: none; color: #fff; cursor: pointer; border-radius: 50px; transition: 0.3s; }
-        .opt-btn.active { background: #C5A16F; border-color: #C5A16F; color: #1A2420; font-weight: 700; }
+        
+        /* Стили кнопок конфигуратора */
+        .opt-btn { padding: 12px 20px; border: 1px solid rgba(197, 161, 111, 0.3); background: none; color: #fff; cursor: pointer; border-radius: 50px; transition: 0.3s; font-size: 0.85rem; }
+        .opt-btn:hover { border-color: #C5A16F; background: rgba(197, 161, 111, 0.05); }
+        .opt-btn.active { background: #C5A16F; border-color: #C5A16F; color: #1A2420; font-weight: 700; box-shadow: 0 4px 15px rgba(197, 161, 111, 0.3); }
+
+        /* Скроллбары для списков */
+        .scroll-area { display: flex; flex-wrap: wrap; gap: 10px; max-height: 250px; overflow-y: auto; padding-right: 10px; }
+        .scroll-area::-webkit-scrollbar { width: 4px; }
+        .scroll-area::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
+        .scroll-area::-webkit-scrollbar-thumb { background: #C5A16F; border-radius: 10px; }
     </style>
 </head>
 <body>
@@ -54,13 +63,12 @@
 
     <section id="catalog" class="section">
         <h2 style="text-align: center; font-family: 'Syne'; font-size: 3rem; margin-bottom: 50px;">Коллекция резиденций</h2>
-        <div class="grid-houses" id="house-list">
-            <!-- Сюда JS вставит карточки -->
-        </div>
+        <div class="grid-houses" id="house-list"></div>
     </section>
 
+    <!-- Секция Философия -->
     <section id="philosophy" class="section">
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 50px; align-items: center;">
             <h2 style="font-family: 'Syne'; font-size: 4rem; line-height: 1;">Тихая роскошь <br>природы</h2>
             <div>
                 <p style="font-size: 1.2rem; opacity: 0.8; margin-bottom: 30px;">Мы создаем пространства, где архитектура становится частью ландшафта, используя только натуральные материалы.</p>
@@ -72,6 +80,7 @@
         </div>
     </section>
 
+    <!-- Ипотечный расчет -->
     <section id="calc" class="section">
         <div class="calc-container" style="background: #F4F1EA; color: #1A2420; padding: 60px; border-radius: 40px;">
             <h2 style="font-family: 'Syne'; font-size: 2.5rem; margin-bottom: 40px;">Ипотечный расчет</h2>
@@ -79,7 +88,6 @@
                 <div>
                     <label style="font-weight: 700;">Стоимость: <span id="priceLabel">15 000 000</span> ₽</label>
                     <input type="range" id="priceRange" min="10000000" max="25000000" step="500000" value="15000000" style="width: 100%; accent-color: #C5A16F; margin: 20px 0;">
-                    
                     <label style="font-weight: 700;">Взнос: <span id="initialLabel">3 000 000</span> ₽</label>
                     <input type="range" id="initialRange" min="1500000" max="10000000" step="100000" value="3000000" style="width: 100%; accent-color: #C5A16F; margin: 20px 0;">
                 </div>
@@ -91,28 +99,52 @@
         </div>
     </section>
 
+    <!-- Улучшенный Конструктор (10+10) -->
     <section id="constructor" class="section">
         <div style="background: #1F2823; padding: 60px; border-radius: 40px; border: 1px solid rgba(255,255,255,0.05);">
             <h2 style="font-family: 'Syne'; font-size: 2.5rem; margin-bottom: 40px;">Конфигуратор резиденции</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
+                
+                <!-- Материалы -->
                 <div>
                     <p style="font-size: 0.7rem; font-weight: 800; opacity: 0.5; text-transform: uppercase; margin-bottom: 20px;">Материал фасада</p>
-                    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    <div class="scroll-area">
                         <button class="opt-btn active" data-add="0" onclick="window.selectOpt(this)">Кедр</button>
-                        <button class="opt-btn" data-add="1500000" onclick="window.selectOpt(this)">Камень</button>
-                        <button class="opt-btn" data-add="2200000" onclick="window.selectOpt(this)">Мрамор</button>
+                        <button class="opt-btn" data-add="1200000" onclick="window.selectOpt(this)">Сланец</button>
+                        <button class="opt-btn" data-add="2500000" onclick="window.selectOpt(this)">Мрамор</button>
+                        <button class="opt-btn" data-add="3100000" onclick="window.selectOpt(this)">Медь</button>
+                        <button class="opt-btn" data-add="800000" onclick="window.selectOpt(this)">Бетон</button>
+                        <button class="opt-btn" data-add="950000" onclick="window.selectOpt(this)">Обж. дерево</button>
+                        <button class="opt-btn" data-add="1800000" onclick="window.selectOpt(this)">Гранит</button>
+                        <button class="opt-btn" data-add="2800000" onclick="window.selectOpt(this)">Стеклопанели</button>
+                        <button class="opt-btn" data-add="1400000" onclick="window.selectOpt(this)">Кирпич</button>
+                        <button class="opt-btn" data-add="4500000" onclick="window.selectOpt(this)">Титан</button>
                     </div>
                 </div>
+
+                <!-- Опции -->
                 <div>
-                    <p style="font-size: 0.7rem; font-weight: 800; opacity: 0.5; text-transform: uppercase; margin-bottom: 20px;">Опции</p>
-                    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-                        <button class="opt-btn" data-add="800000" onclick="window.toggleAddon(this)">Терраса</button>
-                        <button class="opt-btn" data-add="3500000" onclick="window.toggleAddon(this)">Бассейн</button>
+                    <p style="font-size: 0.7rem; font-weight: 800; opacity: 0.5; text-transform: uppercase; margin-bottom: 20px;">Дополнительные опции</p>
+                    <div class="scroll-area">
+                        <button class="opt-btn" data-add="850000" onclick="window.toggleAddon(this)">Терраса</button>
+                        <button class="opt-btn" data-add="3200000" onclick="window.toggleAddon(this)">Бассейн</button>
+                        <button class="opt-btn" data-add="1100000" onclick="window.toggleAddon(this)">Умный дом</button>
+                        <button class="opt-btn" data-add="1500000" onclick="window.toggleAddon(this)">Панорамная крыша</button>
+                        <button class="opt-btn" data-add="2200000" onclick="window.toggleAddon(this)">Гараж x2</button>
+                        <button class="opt-btn" data-add="1800000" onclick="window.toggleAddon(this)">Винный погреб</button>
+                        <button class="opt-btn" data-add="900000" onclick="window.toggleAddon(this)">Сауна</button>
+                        <button class="opt-btn" data-add="1300000" onclick="window.toggleAddon(this)">Зимний сад</button>
+                        <button class="opt-btn" data-add="2100000" onclick="window.toggleAddon(this)">Солнечные панели</button>
+                        <button class="opt-btn" data-add="700000" onclick="window.toggleAddon(this)">Камин</button>
                     </div>
                 </div>
-                <div style="text-align: right;">
-                    <p style="opacity: 0.5;">Итоговая стоимость</p>
-                    <div style="font-size: 2.5rem; font-weight: 800; color: #C5A16F; font-family: 'Syne';"><span id="final-price">10 000 000</span> ₽</div>
+
+                <!-- Итог -->
+                <div style="text-align: right; display: flex; flex-direction: column; justify-content: center;">
+                    <p style="opacity: 0.5; margin-bottom: 10px;">Итоговая стоимость</p>
+                    <div style="font-size: 3rem; font-weight: 800; color: #C5A16F; font-family: 'Syne'; line-height: 1;">
+                        <span id="final-price">10 000 000</span> ₽
+                    </div>
                 </div>
             </div>
         </div>
@@ -122,7 +154,7 @@
     <script src="https://unpkg.com"></script>
     <script src="https://cdn.jsdelivr.net"></script>
 
-    <!-- Ваши скрипты (теперь разделенные) -->
+    <!-- Скрипты -->
     <script src="js/init.js"></script>
     <script src="js/catalog.js"></script>
     <script src="js/calculator.js"></script>
