@@ -5,12 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nolly Building | Эстетика загородной жизни</title>
     
-    <!-- Шрифты -->
+    <!-- Шрифты: Добавлен вес 900 для Syne -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com" rel="stylesheet">
     
-    <link rel="stylesheet" href="style.css">
+    <!-- Библиотеки CSS -->
+    <link href="https://unpkg.com" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    
+    <style>
+        body { font-family: 'Manrope', sans-serif; background-color: #1A2420; color: #fff; margin: 0; overflow-x: hidden; }
+        .section { padding: 100px 5%; max-width: 1400px; margin: 0 auto; }
+        .grid-houses { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        
+        /* Навигация */
+        .navbar { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(26, 36, 32, 0.8); backdrop-filter: blur(10px); padding: 20px 0; }
+        .nav-container { display: flex; justify-content: center; align-items: center; }
+        .nav-links a { color: #fff; text-decoration: none; margin: 0 20px; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.7; transition: 0.3s; }
+        .nav-links a:hover { opacity: 1; color: #C5A16F; }
+
+        /* Кнопки конфигуратора */
+        .opt-btn { padding: 12px 20px; border: 1px solid rgba(197, 161, 111, 0.3); background: none; color: #fff; cursor: pointer; border-radius: 50px; transition: 0.3s; font-size: 0.85rem; white-space: nowrap; }
+        .opt-btn:hover { border-color: #C5A16F; background: rgba(197, 161, 111, 0.05); }
+        .opt-btn.active { background: #C5A16F; border-color: #C5A16F; color: #1A2420; font-weight: 700; box-shadow: 0 4px 15px rgba(197, 161, 111, 0.3); }
+
+        /* Область выбора с прокруткой */
+        .scroll-area { display: flex; flex-wrap: wrap; gap: 10px; max-height: 250px; overflow-y: auto; padding-right: 10px; align-content: flex-start; }
+        .scroll-area::-webkit-scrollbar { width: 4px; }
+        .scroll-area::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
+        .scroll-area::-webkit-scrollbar-thumb { background: #C5A16F; border-radius: 10px; }
+    </style>
 </head>
 <body>
 
@@ -22,39 +49,117 @@
                 <a href="#calc">Ипотека</a>
                 <a href="#constructor">Конструктор</a>
             </div>
+            <div class="quiz-icon" onclick="window.openQuiz()" style="margin-left: 20px; cursor: pointer;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C5A16F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                </svg>
+            </div>
         </div>
     </nav>
 
-    <header class="hero">
-        <h1 class="main-title">Nolly Building</h1>
-        <p class="hero-sub">Премиальные резиденции от 10 млн ₽</p>
-        <a href="#constructor" class="btn-main">Создать свой дом</a>
-    </header>
+    <section class="hero" style="height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; background: radial-gradient(circle at center, #2a3d34 0%, #1A2420 100%);">
+        <div class="hero-content" data-aos="zoom-in" data-aos-duration="1500">
+            <h1 class="main-title" style="font-family: 'Syne'; font-size: 6rem; line-height: 0.9; margin: 0;">Nolly <br>Building</h1>
+            <p class="hero-sub" style="font-size: 1.5rem; margin-top: 20px; opacity: 0.8;">Премиальные резиденции от 10 млн ₽</p>
+            <a href="#constructor" class="btn-main" style="display: inline-block; margin-top: 30px; background: #C5A16F; color: #1A2420; padding: 20px 40px; text-decoration: none; border-radius: 50px; font-weight: 800;">Создать свой дом</a>
+        </div>
+    </section>
 
     <section id="catalog" class="section">
-        <h2 class="section-title">Коллекция резиденций</h2>
+        <h2 style="text-align: center; font-family: 'Syne'; font-size: 3rem; margin-bottom: 50px;">Коллекция резиденций</h2>
         <div class="grid-houses" id="house-list"></div>
     </section>
 
-    <section id="calc" class="section">
-        <div class="card-light">
-            <h2>Ипотечный расчет</h2>
-            <div class="calc-grid">
-                <div class="inputs">
-                    <label>Цена: <span id="priceLabel">15.0</span> млн ₽</label>
-                    <input type="range" id="priceRange" min="10" max="50" step="0.5" value="15">
-                    <label>Взнос: <span id="initialLabel">3.0</span> млн ₽</label>
-                    <input type="range" id="initialRange" min="1" max="20" step="0.5" value="3">
-                </div>
-                <div class="result">
-                    <p>Ежемесячный платеж</p>
-                    <h3 id="monthlyResult">84 500 ₽</h3>
+    <section id="philosophy" class="section">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 50px; align-items: center;">
+            <h2 style="font-family: 'Syne'; font-size: 4rem; line-height: 1;">Тихая роскошь <br>природы</h2>
+            <div>
+                <p style="font-size: 1.2rem; opacity: 0.8; margin-bottom: 30px;">Мы создаем пространства, где архитектура становится частью ландшафта, используя только натуральные материалы.</p>
+                <div style="border-left: 2px solid #C5A16F; padding-left: 20px;">
+                    <span style="font-size: 3rem; font-weight: 800; color: #C5A16F;">10+ лет</span>
+                    <p style="font-weight: 600; margin: 0;">Безупречного качества строительства.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Подключаем логику -->
-    <script src="script.js"></script>
+    <section id="calc" class="section">
+        <div class="calc-container" style="background: #F4F1EA; color: #1A2420; padding: 60px; border-radius: 40px;">
+            <h2 style="font-family: 'Syne'; font-size: 2.5rem; margin-bottom: 40px;">Ипотечный расчет</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 50px;">
+                <div>
+                    <label style="font-weight: 700; display: block;">Стоимость: <span id="priceLabel">15 000 000</span> ₽</label>
+                    <input type="range" id="priceRange" min="10000000" max="25000000" step="500000" value="15000000" style="width: 100%; accent-color: #C5A16F; margin: 20px 0;">
+                    <label style="font-weight: 700; display: block;">Взнос: <span id="initialLabel">3 000 000</span> ₽</label>
+                    <input type="range" id="initialRange" min="1500000" max="10000000" step="100000" value="3000000" style="width: 100%; accent-color: #C5A16F; margin: 20px 0;">
+                </div>
+                <div style="text-align: right;">
+                    <p style="text-transform: uppercase; opacity: 0.6; font-size: 0.8rem; font-weight: 700;">Ежемесячный платеж</p>
+                    <h3 id="monthlyResult" style="font-size: 4rem; font-family: 'Syne'; margin: 0;">84 500 ₽</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="constructor" class="section">
+        <div style="background: #1F2823; padding: 60px; border-radius: 40px; border: 1px solid rgba(255,255,255,0.05);">
+            <h2 style="font-family: 'Syne'; font-size: 2.5rem; margin-bottom: 40px;">Конфигуратор резиденции</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px;">
+                
+                <!-- МАТЕРИАЛЫ (10 шт) -->
+                <div>
+                    <p style="font-size: 0.7rem; font-weight: 800; opacity: 0.5; text-transform: uppercase; margin-bottom: 20px;">Материал фасада</p>
+                    <div class="scroll-area">
+                        <button class="opt-btn active" data-add="0" onclick="window.selectOpt(this)">Кедр</button>
+                        <button class="opt-btn" data-add="1200000" onclick="window.selectOpt(this)">Сланец</button>
+                        <button class="opt-btn" data-add="2500000" onclick="window.selectOpt(this)">Мрамор</button>
+                        <button class="opt-btn" data-add="3100000" onclick="window.selectOpt(this)">Медь</button>
+                        <button class="opt-btn" data-add="800000" onclick="window.selectOpt(this)">Бетон</button>
+                        <button class="opt-btn" data-add="950000" onclick="window.selectOpt(this)">Обж. дерево</button>
+                        <button class="opt-btn" data-add="1800000" onclick="window.selectOpt(this)">Гранит</button>
+                        <button class="opt-btn" data-add="2800000" onclick="window.selectOpt(this)">Стеклопанели</button>
+                        <button class="opt-btn" data-add="1450000" onclick="window.selectOpt(this)">Кирпич</button>
+                        <button class="opt-btn" data-add="4500000" onclick="window.selectOpt(this)">Титан</button>
+                    </div>
+                </div>
+
+                <!-- ОПЦИИ (10 шт) -->
+                <div>
+                    <p style="font-size: 0.7rem; font-weight: 800; opacity: 0.5; text-transform: uppercase; margin-bottom: 20px;">Дополнительные опции</p>
+                    <div class="scroll-area">
+                        <button class="opt-btn" data-add="850000" onclick="window.toggleAddon(this)">Терраса</button>
+                        <button class="opt-btn" data-add="3200000" onclick="window.toggleAddon(this)">Бассейн</button>
+                        <button class="opt-btn" data-add="1100000" onclick="window.toggleAddon(this)">Умный дом</button>
+                        <button class="opt-btn" data-add="1500000" onclick="window.toggleAddon(this)">Панорамная крыша</button>
+                        <button class="opt-btn" data-add="2200000" onclick="window.toggleAddon(this)">Гараж x2</button>
+                        <button class="opt-btn" data-add="1800000" onclick="window.toggleAddon(this)">Винный погреб</button>
+                        <button class="opt-btn" data-add="900000" onclick="window.toggleAddon(this)">Сауна</button>
+                        <button class="opt-btn" data-add="1300000" onclick="window.toggleAddon(this)">Зимний сад</button>
+                        <button class="opt-btn" data-add="2100000" onclick="window.toggleAddon(this)">Солнечные панели</button>
+                        <button class="opt-btn" data-add="700000" onclick="window.toggleAddon(this)">Камин</button>
+                    </div>
+                </div>
+
+                <!-- ИТОГО -->
+                <div style="text-align: right; display: flex; flex-direction: column; justify-content: center; align-items: flex-end;">
+                    <p style="opacity: 0.5; margin: 0; font-weight: 600; font-size: 0.9rem;">Итоговая стоимость</p>
+                    <div style="font-size: 4rem; font-weight: 900; color: #C5A16F; font-family: 'Syne', sans-serif; white-space: nowrap; line-height: 1.1; letter-spacing: -2px;">
+                        <span id="final-price">10 000 000</span> ₽
+                    </div>
+                    <button onclick="alert('Менеджер свяжется с вами для уточнения деталей!')" style="margin-top: 25px; background: #C5A16F; color: #1A2420; border: none; padding: 18px 35px; border-radius: 50px; font-weight: 800; cursor: pointer; transition: 0.3s; font-size: 1rem;">Забронировать проект</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Скрипты -->
+    <script src="https://unpkg.com"></script>
+    <script src="https://cdn.jsdelivr.net"></script>
+    <script src="js/init.js"></script>
+    <script src="js/catalog.js"></script>
+    <script src="js/calculator.js"></script>
+    <script src="js/ui-utils.js"></script>
 </body>
 </html>
