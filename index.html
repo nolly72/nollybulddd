@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nolly Building | Эстетика загородной жизни</title>
     
-    <!-- Шрифты: Montserrat (заголовки) и Syne (акценты) -->
+    <!-- Шрифты и Библиотеки -->
     <link href="https://fonts.googleapis.com" rel="stylesheet">
     <link href="https://unpkg.com" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
@@ -21,7 +21,7 @@
                 <a href="#constructor">Конструктор</a>
             </div>
             <div class="quiz-icon" onclick="openQuiz()" title="Подобрать дом">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
             </div>
         </div>
     </nav>
@@ -35,18 +35,18 @@
         </div>
     </section>
 
-    <!-- Каталог (6 домов) -->
+    <!-- Каталог -->
     <section id="catalog" class="section">
         <h2 class="section-title" data-aos="fade-up">Коллекция резиденций</h2>
         <div class="grid-houses" id="house-list">
-            <!-- Дома генерируются через JS или вручную ниже -->
+            <!-- Генерируется через JS -->
         </div>
     </section>
 
     <!-- Ипотечный калькулятор -->
-    <section id="calc" class="section calc-bg">
+    <section id="calc" class="section">
         <div class="calc-container" data-aos="zoom-in">
-            <h2>Финансовый расчет</h2>
+            <h2 class="section-title" style="color: var(--green); text-align: left;">Финансовый расчет</h2>
             <div class="calc-grid">
                 <div class="calc-inputs">
                     <label>Стоимость: <span id="priceLabel">15 000 000</span> ₽</label>
@@ -56,14 +56,51 @@
                     <input type="range" id="initialRange" min="1500000" max="10000000" step="100000" value="3000000">
                 </div>
                 <div class="calc-result">
-                    <p>Ежемесячно</p>
+                    <p>Ежемесячный платеж</p>
                     <h3 id="monthlyResult">84 500 ₽</h3>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Скрипты -->
+    <!-- Конструктор -->
+    <section id="constructor" class="section">
+        <div class="constructor-card" data-aos="fade-up">
+            <div class="constr-header">
+                <h2 class="section-title" style="text-align: left; margin-bottom: 10px;">Конструктор резиденции</h2>
+                <p style="color: var(--accent); margin-bottom: 40px;">Индивидуальное проектирование Nolly</p>
+            </div>
+
+            <div class="constr-grid">
+                <div class="constr-item">
+                    <p class="opt-label">Основной материал</p>
+                    <div class="opt-group">
+                        <button class="opt-btn active" data-add="0" onclick="selectOpt(this, 'mat')">Кедр</button>
+                        <button class="opt-btn" data-add="1500000" onclick="selectOpt(this, 'mat')">Природный камень</button>
+                        <button class="opt-btn" data-add="2200000" onclick="selectOpt(this, 'mat')">Монолит-стекло</button>
+                    </div>
+                </div>
+
+                <div class="constr-item">
+                    <p class="opt-label">Дополнительные опции</p>
+                    <div class="opt-group">
+                        <button class="opt-btn" data-add="800000" onclick="toggleAddon(this)">Терраса 40м²</button>
+                        <button class="opt-btn" data-add="3500000" onclick="toggleAddon(this)">Бассейн-инфинити</button>
+                    </div>
+                </div>
+
+                <div class="constr-result">
+                    <p>Стоимость проекта</p>
+                    <div class="total-price-box">
+                        <span id="final-price">10 000 000</span> <small>₽</small>
+                    </div>
+                    <button class="btn-main" style="width: 100%; margin-top: 20px;">Заказать расчет</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- JS Библиотеки -->
     <script src="https://unpkg.com"></script>
     <script src="https://unpkg.com"></script>
     <script src="js/main.js"></script>
